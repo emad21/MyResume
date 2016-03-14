@@ -47,6 +47,30 @@ public class MainActivity extends AppCompatActivity {
         }
         return json;
     }
+     public String getData() {
+
+        String result = null;
+        try {
+            JSONObject parentobj = new JSONObject(loadJSONFromAsset());
+            JSONArray parentArray = parentobj.getJSONArray("Resume");
+            JSONObject nxtobj = parentArray.getJSONObject(0);
+            ResumeModel rmodel = new ResumeModel();
+             result = nxtobj.getString("Name");
+            rmodel.setName(nxtobj.getString("Name"));
+            rmodel.setEmail(nxtobj.getString("E-mail"));
+            rmodel.setPhone(nxtobj.getString("Phone"));
+            rmodel.setPhone(nxtobj.getString("Education"));
+            rmodel.setEdu(nxtobj.getString("Education"));
+            rmodel.setUni(nxtobj.getString("University"));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+     }
+
+        return result;
+
+    }
+
 
       
   @Override
