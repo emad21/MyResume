@@ -48,7 +48,25 @@ public class MainActivity extends AppCompatActivity {
         loadJSONFromAsset();
         getData();
         ResumeModel rmodel = new ResumeModel();
-        tv2.setText(rmodel.getEdu());
+         ResumeModel.tskills skills = new ResumeModel.tskills();
+         ResumeModel.projects projects = new ResumeModel.projects();
+        tv1.setText("Name: "+rmodel.getName());
+        tv2.setText("E-mail: "+rmodel.getEmail());
+        tv3.setText("Phone: "+rmodel.getPhone());
+        tv4.setText("Education: "+rmodel.getEdu());
+        tv5.setText("University:" +rmodel.getUni());
+        tv6.setText("Technical skills: ";
+        tv61.setText("Languages: "+rmodel.getEdu());
+        tv62.setText("Operating Systems: "+skills.getOs());
+        tv63.setText("Technologies: "+skills.getTechno());
+        tv64.setText("Web Development: "+skills.getWebd());
+        tv65.setText("Mobile Programming: "+skills.getMobilep());
+        tv66.setText("Type setting"+skills.getTypes());
+        tv7.setText("Projects: ");
+        tv71.setText("web Programming"+projects.getWebpro());
+        tv72.setText("Artificial Intelligence: "+projects.getAi());
+        tv73.setText("Cryptography: "+projects.getCrypto());
+        tv74.setText("Machine Learning: "+projects.getMl());
 
 
 
@@ -95,10 +113,10 @@ public class MainActivity extends AppCompatActivity {
             skills.setTypes(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Type setting"));
             //for projects
             ResumeModel.projects projects = new ResumeModel.projects();
-            projects.setWebpro(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Languages"));
-            projects.setAi(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Operating systems"));
-            projects.setCrypto(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Technologies"));
-            projects.setMl(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Web development"));
+           projects.setWebpro(nxtobj.getJSONArray("Projects").getJSONObject(0).getString("web Programming"));
+            projects.setAi(nxtobj.getJSONArray("Projects").getJSONObject(0).getString("Artificial Intelligence"));
+            projects.setCrypto(nxtobj.getJSONArray("Projects").getJSONObject(0).getString("Cryptography"));
+            projects.setMl(nxtobj.getJSONArray("Projects").getJSONObject(0).getString("Machine Learning"));
 
 
         } catch (JSONException e) {
