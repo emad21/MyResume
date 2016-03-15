@@ -62,6 +62,21 @@ public class MainActivity extends AppCompatActivity {
             rmodel.setPhone(nxtobj.getString("Education"));
             rmodel.setEdu(nxtobj.getString("Education"));
             rmodel.setUni(nxtobj.getString("University"));
+               //for technical skills
+            ResumeModel.tskills skills = new ResumeModel.tskills();
+            skills.setLanguage(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Languages"));
+            skills.setOs(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Operating systems"));
+            skills.setTechno(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Technologies"));
+            skills.setWebd(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Web development"));
+            skills.setMobilep(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Mobile Programming"));
+            skills.setTypes(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Type setting"));
+            //for projects
+            ResumeModel.projects projects = new ResumeModel.projects();
+            projects.setWebpro(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Languages"));
+            projects.setAi(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Operating systems"));
+            projects.setCrypto(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Technologies"));
+            projects.setMl(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Web development"));
+
 
         } catch (JSONException e) {
             e.printStackTrace();
