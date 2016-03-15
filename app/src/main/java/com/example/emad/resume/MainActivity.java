@@ -27,6 +27,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+          //Button bt1 = (Button) findViewById(R.id.bt1);
+        TextView tv1 = (TextView) findViewById(R.id.tv1);
+        TextView tv2 = (TextView) findViewById(R.id.tv2);
+        TextView tv3 = (TextView) findViewById(R.id.tv3);
+        TextView tv4 = (TextView) findViewById(R.id.tv4);
+        TextView tv5 = (TextView) findViewById(R.id.tv5);
+        TextView tv6 = (TextView) findViewById(R.id.tv6);
+        TextView tv61 = (TextView) findViewById(R.id.tv61);
+        TextView tv62 = (TextView) findViewById(R.id.tv62);
+        TextView tv63 = (TextView) findViewById(R.id.tv63);
+        TextView tv64 = (TextView) findViewById(R.id.tv64);
+        TextView tv65 = (TextView) findViewById(R.id.tv65);
+        TextView tv66 = (TextView) findViewById(R.id.tv66);
+        TextView tv7 = (TextView) findViewById(R.id.tv7);
+        TextView tv71 = (TextView) findViewById(R.id.tv71);
+        TextView tv72 = (TextView) findViewById(R.id.tv72);
+        TextView tv73 = (TextView) findViewById(R.id.tv73);
+        TextView tv74 = (TextView) findViewById(R.id.tv74);
+        loadJSONFromAsset();
+        getData();
+        ResumeModel rmodel = new ResumeModel();
+        tv2.setText(rmodel.getEdu());
+
 
 
     }
