@@ -5,13 +5,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.app.Activity;
 import android.widget.Button;
 import android.widget.TextView;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,12 +22,17 @@ import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
 
+    ResumeModel rmodel = new ResumeModel();
+    ResumeModel.tskills skills = new ResumeModel.tskills();
+    ResumeModel.projects projects = new ResumeModel.projects();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-          //Button bt1 = (Button) findViewById(R.id.bt1);
+        
         TextView tv1 = (TextView) findViewById(R.id.tv1);
         TextView tv2 = (TextView) findViewById(R.id.tv2);
         TextView tv3 = (TextView) findViewById(R.id.tv3);
@@ -47,15 +52,14 @@ public class MainActivity extends AppCompatActivity {
         TextView tv74 = (TextView) findViewById(R.id.tv74);
         loadJSONFromAsset();
         getData();
-        ResumeModel rmodel = new ResumeModel();
-         ResumeModel.tskills skills = new ResumeModel.tskills();
-         ResumeModel.projects projects = new ResumeModel.projects();
+//        Log.d("test2",rmodel.getName());
+
         tv1.setText("Name: "+rmodel.getName());
         tv2.setText("E-mail: "+rmodel.getEmail());
         tv3.setText("Phone: "+rmodel.getPhone());
         tv4.setText("Education: "+rmodel.getEdu());
         tv5.setText("University:" +rmodel.getUni());
-        tv6.setText("Technical skills: ";
+        tv6.setText("Technical skills: ");
         tv61.setText("Languages: "+rmodel.getEdu());
         tv62.setText("Operating Systems: "+skills.getOs());
         tv63.setText("Technologies: "+skills.getTechno());
@@ -68,12 +72,8 @@ public class MainActivity extends AppCompatActivity {
         tv73.setText("Cryptography: "+projects.getCrypto());
         tv74.setText("Machine Learning: "+projects.getMl());
 
-
-
-    }
-
-    // this function will load json from its local json file
-      public String loadJSONFromAsset() {
+   }
+    public String loadJSONFromAsset() {
         String json = null;
         try {
             InputStream is = getAssets().open("resume.json");
@@ -88,48 +88,50 @@ public class MainActivity extends AppCompatActivity {
         }
         return json;
     }
-     public String getData() {
+
+    public String getData() {
 
         String result = null;
         try {
             JSONObject parentobj = new JSONObject(loadJSONFromAsset());
             JSONArray parentArray = parentobj.getJSONArray("Resume");
             JSONObject nxtobj = parentArray.getJSONObject(0);
-            ResumeModel rmodel = new ResumeModel();
+
              result = nxtobj.getString("Name");
+//            Log.d("test", result);
             rmodel.setName(nxtobj.getString("Name"));
             rmodel.setEmail(nxtobj.getString("E-mail"));
             rmodel.setPhone(nxtobj.getString("Phone"));
-            rmodel.setPhone(nxtobj.getString("Education"));
+
             rmodel.setEdu(nxtobj.getString("Education"));
             rmodel.setUni(nxtobj.getString("University"));
-               //for technical skills
-            ResumeModel.tskills skills = new ResumeModel.tskills();
+
+            //for technical skills
+
             skills.setLanguage(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Languages"));
             skills.setOs(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Operating systems"));
             skills.setTechno(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Technologies"));
             skills.setWebd(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Web development"));
             skills.setMobilep(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Mobile Programming"));
             skills.setTypes(nxtobj.getJSONArray("Technical skills").getJSONObject(0).getString("Type setting"));
+
             //for projects
-            ResumeModel.projects projects = new ResumeModel.projects();
-           projects.setWebpro(nxtobj.getJSONArray("Projects").getJSONObject(0).getString("web Programming"));
+
+            projects.setWebpro(nxtobj.getJSONArray("Projects").getJSONObject(0).getString("web Programming"));
             projects.setAi(nxtobj.getJSONArray("Projects").getJSONObject(0).getString("Artificial Intelligence"));
             projects.setCrypto(nxtobj.getJSONArray("Projects").getJSONObject(0).getString("Cryptography"));
             projects.setMl(nxtobj.getJSONArray("Projects").getJSONObject(0).getString("Machine Learning"));
 
 
+
         } catch (JSONException e) {
             e.printStackTrace();
-     }
+        }
 
         return result;
 
     }
-
-
-      
-  @Override
+@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);

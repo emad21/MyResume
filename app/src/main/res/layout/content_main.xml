@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Resume"
-        android:id="@+id/tv1"
+        android:id="@+id/tv"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textAlignment="center" />
@@ -28,8 +28,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
-        android:id="@+id/textView"
-        android:layout_below="@+id/tv1"
+        android:id="@+id/tv1"
+        android:layout_below="@+id/tv"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/tv2"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/tv1"
         android:layout_alignParentStart="true" />
 
     <TextView
