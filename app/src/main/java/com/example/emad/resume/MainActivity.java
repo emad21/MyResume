@@ -89,16 +89,14 @@ public class MainActivity extends AppCompatActivity {
         return json;
     }
 
-    public String getData() {
+    public void getData() {
 
-        String result = null;
         try {
             JSONObject parentobj = new JSONObject(loadJSONFromAsset());
             JSONArray parentArray = parentobj.getJSONArray("Resume");
             JSONObject nxtobj = parentArray.getJSONObject(0);
 
-             result = nxtobj.getString("Name");
-//            Log.d("test", result);
+            // Log.d("test", result);
             rmodel.setName(nxtobj.getString("Name"));
             rmodel.setEmail(nxtobj.getString("E-mail"));
             rmodel.setPhone(nxtobj.getString("Phone"));
@@ -127,9 +125,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        return result;
-
+        return 0;
     }
 @Override
     public boolean onCreateOptionsMenu(Menu menu) {
